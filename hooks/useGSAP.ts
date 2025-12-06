@@ -89,7 +89,7 @@ export function useFadeIn(delay: number = 0): RefObject<HTMLDivElement | null> {
   return ref;
 }
 
-export function useStaggerReveal(stagger: number = 0.1): RefObject<HTMLDivElement> {
+export function useStaggerReveal(stagger: number = 0.1): RefObject<HTMLDivElement | null> {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
