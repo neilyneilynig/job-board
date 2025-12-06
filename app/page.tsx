@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import Navbar from '../components/layout/Navbar';
+import Navbar from '/components/layout/Navbar';
 import { ArrowRight, Sparkles, TrendingUp } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
