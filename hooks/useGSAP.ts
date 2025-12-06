@@ -46,7 +46,7 @@ export function useScrollReveal(options?: {
   return ref;
 }
 
-export function useParallax(speed: number = 0.5): RefObject<HTMLDivElement> {
+export function useParallax(speed: number = 0.5): RefObject<HTMLDivElement | null> {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -67,7 +67,7 @@ export function useParallax(speed: number = 0.5): RefObject<HTMLDivElement> {
   return ref;
 }
 
-export function useFadeIn(delay: number = 0): RefObject<HTMLDivElement> {
+export function useFadeIn(delay: number = 0): RefObject<HTMLDivElement | null> {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
