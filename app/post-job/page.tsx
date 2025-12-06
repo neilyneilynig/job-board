@@ -85,7 +85,7 @@ export default function PostJobPage() {
     return () => ctx.revert();
   }, []);
 
-  const validateStep = (step: number): boolean => {
+  const getStepErrors = (step: number): Record<string, string> => {
     const newErrors: Record<string, string> = {};
 
     if (step === 1) {
@@ -102,9 +102,13 @@ export default function PostJobPage() {
       if (formData.requirements.filter((r) => r.trim()).length === 0)
         newErrors.requirements = 'At least one requirement is required';
     }
+    return newErrors;
+  };
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+  const validateStep = (step: number): boolean => {
+    const stepErrors = getStepErrors(step);
+    setErrors(stepErrors);
+    return Object.keys(stepErrors).length === 0;
   };
 
   const handleNext = () => {
@@ -211,7 +215,7 @@ export default function PostJobPage() {
                 <div key={step.number} className="flex items-center">
                   <button
                     onClick={() => setCurrentStep(step.number)}
-                    disabled={step.number > currentStep && !validateStep(currentStep)}
+                    disabled={step.number > currentStep && Object.keys(getStepErrors(currentStep)).length > 0}
                     className={`flex items-center gap-4 px-6 py-4 rounded-2xl transition-all ${
                       currentStep === step.number
                         ? 'gradient-bg'
